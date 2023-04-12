@@ -15,6 +15,13 @@ public class Runner {
         try {
             mapper.writeValue(new File("src/main/resources/files/orders.json"), order);
             mapper.writeValue(new File("src/main/resources/files/repairers.json"), repairer);
+
+            String jsonInString1 = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(order);
+            String jsonInString2 = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(repairer);
+
+            System.out.println(jsonInString1);
+            System.out.println(jsonInString2);
+
         } catch (IOException e) {
             e.printStackTrace();
         }
