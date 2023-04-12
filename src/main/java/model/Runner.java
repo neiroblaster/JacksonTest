@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Paths;
 
 public class Runner {
     public static void main(String[] args) throws JsonProcessingException {
@@ -16,11 +17,19 @@ public class Runner {
             mapper.writeValue(new File("src/main/resources/files/orders.json"), order);
             mapper.writeValue(new File("src/main/resources/files/repairers.json"), repairer);
 
-            String jsonInString1 = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(order);
-            String jsonInString2 = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(repairer);
+//            String jsonInString1 = mapper1.writerWithDefaultPrettyPrinter().writeValueAsString(order);
+//            String jsonInString2 = mapper1.writer().writeValueAsString(repairer);
 
-            System.out.println(jsonInString1);
-            System.out.println(jsonInString2);
+            Repairer repairer1 = mapper.readValue(Paths.get("src/main/resources/files/repairers" +
+                    ".json").toFile(), Repairer.class);
+            String jsonInString3 = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(repairer1);
+            System.out.println(jsonInString3);
+
+            Order order1 = mapper.readValue(Paths.get("src/main/resources/files/repairers" +
+                    ".json").toFile(), Order.class);
+            String jsonInString4 = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(order1);
+            System.out.println(jsonInString4);
+
 
         } catch (IOException e) {
             e.printStackTrace();
