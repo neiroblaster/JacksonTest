@@ -20,13 +20,13 @@ public class Runner {
 //            String jsonInString1 = mapper1.writerWithDefaultPrettyPrinter().writeValueAsString(order);
 //            String jsonInString2 = mapper1.writer().writeValueAsString(repairer);
 
-            Repairer repairer1 = mapper.readValue(Paths.get("src/main/resources/files/repairers" +
-                    ".json").toFile(), Repairer.class);
+            Repairer repairer1 = mapper.readValue(new File("src/main/resources/files/repairers" +
+                    ".json"), Repairer.class);
             String jsonInString3 = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(repairer1);
             System.out.println(jsonInString3);
 
-            Order order1 = mapper.readValue(Paths.get("src/main/resources/files/repairers" +
-                    ".json").toFile(), Order.class);
+            Order order1 = mapper.readValue(new File("src/main/resources/files/repairers" +
+                    ".json"), Order.class);
             String jsonInString4 = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(order1);
             System.out.println(jsonInString4);
 
