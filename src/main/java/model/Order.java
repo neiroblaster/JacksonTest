@@ -11,8 +11,8 @@ public class Order {
         this.inProgress = inProgress;
     }
 
-    public Order() {
-    }
+//    public Order() {
+//    }
 
     public int getId() {
         return id;

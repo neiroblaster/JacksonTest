@@ -9,8 +9,8 @@ public class Repairer {
         this.name = name;
     }
 
-    public Repairer() {
-    }
+//    public Repairer() {
+//    }
 
     public int getId() {
         return id;
