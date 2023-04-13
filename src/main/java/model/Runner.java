@@ -11,6 +11,7 @@ import java.io.FileWriter;
 import java.lang.reflect.Type;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -26,6 +27,7 @@ public class Runner {
         order2.setId(2);
 
         Repairer repairer = new Repairer("Tom");
+        Repairer repairer1 = new Repairer("Jhon");
         GarageSlot garageSlot = new GarageSlot();
         order.addRepair(repairer);
         order.setCompletionDate(LocalDate.now());
@@ -35,6 +37,9 @@ public class Runner {
         orders.add(order1);
         orders.add(order2);
 
+        Collection<Repairer> repairers = new ArrayList<>();
+        repairers.add(repairer);
+        repairers.add(repairer1);
 
         GsonBuilder gsonBuilder = new GsonBuilder();
 
@@ -62,13 +67,31 @@ public class Runner {
         }
 
 
-        //File reader
+        //Read List<Order>
         try (FileReader fileReader = new FileReader("files/orders.json")) {
             Type listFromJson = new TypeToken<List<Order>>() {}.getType();
             List<Order> newList = gson.fromJson(fileReader, listFromJson);
 
             System.out.println(gson.toJson(newList.stream()
                     .sorted(Comparator.comparingInt(Order::getId)).collect(Collectors.toList())));
+        } catch (Exception e) {
+            System.out.println("Parsing error: " + e.toString());
+        }
+
+        // Collection of repairers
+        //Write
+        try (FileWriter writer = new FileWriter("files/repairersCollection.json")) {
+            writer.write(gson.toJson(repairers));
+        } catch (Exception e) {
+            System.out.println("Parsing error: " + e.toString());
+        }
+
+        //Read
+        try (FileReader fileReader = new FileReader("files/repairersCollection.json")) {
+            Type listFromJson = new TypeToken<Collection<Repairer>>() {}.getType();
+            Collection<Repairer> newList = gson.fromJson(fileReader, listFromJson);
+
+            System.out.println(gson.toJson(newList));
         } catch (Exception e) {
             System.out.println("Parsing error: " + e.toString());
         }

@@ -1,5 +1,7 @@
 package model;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -7,6 +9,8 @@ import java.util.Collection;
 public class Order {
     private GarageSlot garageSlot;
     private final Collection<Repairer> repairers = new ArrayList<>();
+    // В json будет называться поле price вместо cost
+//    @SerializedName("price")
     private int cost;
     private boolean inProgress;
     private LocalDate creationDate;
