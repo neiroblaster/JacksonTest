@@ -1,18 +1,77 @@
 package model;
 
-public class Order {
-    private int id;
-    private String name;
-    private boolean inProgress;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Collection;
 
-    public Order(int id, String name, boolean inProgress) {
-        this.id = id;
-        this.name = name;
+public class Order {
+    private GarageSlot garageSlot;
+    private final Collection<Repairer> repairers = new ArrayList<>();
+    private int cost;
+    private boolean inProgress;
+    private LocalDate creationDate;
+    private LocalDate completionDate;
+    private int id;
+
+    public Order() {
+        this.creationDate = LocalDate.now();
+        this.inProgress = true;
+
+    }
+
+    public Order(int cost) {
+        this.cost = cost;
+        this.creationDate = LocalDate.now();
+        this.inProgress = true;
+    }
+
+    public void addRepair(Repairer repairer) {
+        repairers.add(repairer);
+    }
+
+    public GarageSlot getGarageSlot() {
+        return garageSlot;
+    }
+
+    public void setGarageSlot(GarageSlot garageSlot) {
+        this.garageSlot = garageSlot;
+    }
+
+    public Collection<Repairer> getRepairers() {
+        return repairers;
+    }
+
+    public int getCost() {
+        return cost;
+    }
+
+    public void setCost(int cost) {
+        this.cost = cost;
+    }
+
+    public boolean isInProgress() {
+        return inProgress;
+    }
+
+    public void setInProgress(boolean inProgress) {
         this.inProgress = inProgress;
     }
 
-//    public Order() {
-//    }
+    public LocalDate getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(LocalDate creationDate) {
+        this.creationDate = creationDate;
+    }
+
+    public LocalDate getCompletionDate() {
+        return completionDate;
+    }
+
+    public void setCompletionDate(LocalDate completionDate) {
+        this.completionDate = completionDate;
+    }
 
     public int getId() {
         return id;
@@ -22,19 +81,13 @@ public class Order {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public boolean isInProgress() {
-        return inProgress;
-    }
-
-    public void setInProgress(boolean inProgress) {
-        this.inProgress = inProgress;
+    @Override
+    public String toString() {
+        return '\n' + "Order{" +
+                "id=" + id + "," + "garageSlot=" + garageSlot + "," +
+                "repairers=" + repairers + "," + "cost=" + cost + "," +
+                "inProgress=" + inProgress + "," + "creationDate=" + creationDate + "," +
+                "completionDate=" + completionDate
+                + '}';
     }
 }

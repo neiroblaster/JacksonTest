@@ -1,1 +1,30 @@
-{"id":1,"name":"oil change","inProgress":true}
+[
+  {
+    "repairers": [
+      {
+        "id": 0,
+        "name": "Tom",
+        "isAvailable": true
+      }
+    ],
+    "cost": 100,
+    "inProgress": true,
+    "creationDate": "13-Apr-2023",
+    "completionDate": "13-Apr-2023",
+    "id": 0
+  },
+  {
+    "repairers": [],
+    "cost": 300,
+    "inProgress": true,
+    "creationDate": "13-Apr-2023",
+    "id": 0
+  },
+  {
+    "repairers": [],
+    "cost": 200,
+    "inProgress": true,
+    "creationDate": "13-Apr-2023",
+    "id": 0
+  }
+]

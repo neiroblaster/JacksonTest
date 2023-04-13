@@ -2,15 +2,18 @@ package model;
 
 public class Repairer {
     private int id;
-    private String name;
+    private final String name;
+    private boolean isAvailable;
 
-    public Repairer(int id, String name) {
-        this.id = id;
-        this.name = name;
+    public Repairer() {
+        this.name = "";
+        isAvailable = true;
     }
 
-//    public Repairer() {
-//    }
+    public Repairer(String name) {
+        this.name = name;
+        isAvailable = true;
+    }
 
     public int getId() {
         return id;
@@ -20,11 +23,29 @@ public class Repairer {
         this.id = id;
     }
 
+    public boolean isAvailable() {
+        return isAvailable;
+    }
+
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public boolean checkIsAvailable() {
+        return isAvailable;
+    }
+
+    public void setIsAvailable(boolean isAvailable) {
+        this.isAvailable = isAvailable;
+    }
+
+    @Override
+    public String toString() {
+        return '\n' +
+                "Repairer{" +
+                "name='" + name + '\'' + "," +
+                "isAvailable=" + isAvailable + "," +
+                "id=" + id + "," +
+                '}';
     }
 }
